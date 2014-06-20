@@ -128,7 +128,7 @@ namespace Data.Repository
 
             DbSet.Attach(t);
 
-            entry.State = System.Data.EntityState.Modified;
+            entry.State = System.Data.Entity.EntityState.Modified;
 
             return Context.SaveChanges();
         }

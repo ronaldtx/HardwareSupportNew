@@ -13,7 +13,7 @@ namespace Core.Interface.Repository
         IList<Maintenance> GetObjectsByItemId(int ItemId);
         IList<Maintenance> GetObjectsByCustomerId(int CustomerId);
         IList<Maintenance> GetObjectsByItemTypeId(int ItemTypeId);
-        IList<Maintenance> GetObjectsByUserId(int UserId);
+        IList<Maintenance> GetObjectsByUserId(int DbUserId);
         Maintenance GetObjectById(int Id);
         Maintenance CreateObject(Maintenance maintenance);
         Maintenance UpdateObject(Maintenance maintenance);

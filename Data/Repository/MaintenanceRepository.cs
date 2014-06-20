@@ -40,9 +40,9 @@ namespace Data.Repository
             return FindAll(x => x.ItemTypeId == ItemTypeId && !x.IsDeleted).ToList();
         }
 
-        public IList<Maintenance> GetObjectsByUserId(int UserId)
+        public IList<Maintenance> GetObjectsByUserId(int DbUserId)
         {
-            return FindAll(x => x.UserId == UserId && !x.IsDeleted).ToList();
+            return FindAll(x => x.DbUserId == DbUserId && !x.IsDeleted).ToList();
         }
 
         public Maintenance GetObjectById(int Id)

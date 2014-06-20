@@ -1,0 +1,350 @@
+﻿@model System.Collections.IEnumerable
+@using Ext.Net;
+@using Ext.Net.MVC;
+@{
+    ViewBag.Title = "List Item";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+@section headtag
+{
+    <script>
+        var template = '<span style="color:{0};">{1}</span>';
+
+        var change = function (value) {
+            return Ext.String.format(template, (value > 0) ? "green" : "red", value);
+        };
+
+        var pctChange = function (value) {
+            return Ext.String.format(template, (value > 0) ? "green" : "red", value + "%");
+        };
+
+        var onComboBoxSelect = function (combo) {
+            var store = combo.up("gridpanel").getStore();
+
+            store.pageSize = parseInt(combo.getValue(), 10);
+            store.reload();
+        };
+
+        var NewForm = function (record) {
+            Ext.getCmp('CmbCustomer').show();
+            Ext.getCmp('TxtCustomerName').hide();
+            App.myFormPanel.reset();
+
+            App.windowForm.show();
+        };
+
+        var EditForm = function (record) {
+
+            Ext.getCmp('TxtId').setValue(record.data.Id);
+            Ext.getCmp('CmbCustomer').setValue(record.data.CustomerId.toString());
+            Ext.getCmp('TxtCustomerName').setValue(record.data.CustomerName);
+            Ext.getCmp('TxtCustomerName').show();
+            Ext.getCmp('CmbCustomer').hide();
+           
+            Ext.getCmp('CmbItemType').setValue(record.data.ItemTypeName);
+            Ext.getCmp('TxtItemTypeId').setValue(record.data.ItemTypeId.toString());
+
+            Ext.getCmp('TxtWarrantyExpiryDate').setValue(record.data.WarrantyExpiryDate.substring(0, 10));
+            Ext.getCmp('TxtManufacturedAt').setValue(record.data.ManufacturedAt.substring(0, 10));
+            Ext.getCmp('TxtDescription').setValue(record.data.Description);
+
+            Ext.getCmp('myFormPanel').setTitle('Edit Item');
+            Ext.getCmp('btnNew').hide();
+            Ext.getCmp('btnEdit').show();
+            App.windowForm.show();
+        };
+
+        var ActionForm = function (command, record) {
+            if (command == 'Edit') {
+                this.EditForm(record);
+            }
+            else {
+                Ext.Msg.confirm('Delete Data', 'Delete Data Code:'+record.data.Code+'?', function (btn, text) {
+                    if (btn == 'yes') {
+                        Ext.Ajax.request({
+                            url: '/Item/DataDelete/' + record.data.Id,
+                            success: function (response, opts) {
+                                //window.location.reload();
+                                Ext.getCmp('GridListItem').getStore().reload();
+                            },
+                            failure: function (response, opts) {
+                                console.log('server-side failure with status code ' + response.status);
+                            }
+                        });
+                    }
+                });
+                /*
+                Ext.Ajax.request({
+                    url: '/Item/SaveDataDelete/'+record.data.Id,
+                    success: function (response, opts) {
+                        //var obj = Ext.decode(response.responseText);
+                        window.location.reload();
+                    },
+                    failure: function (response, opts) {
+                        console.log('server-side failure with status code ' + response.status);
+                    }
+                });
+                */
+            }
+        };
+
+        var onCommand = function (column, command, record, recordIndex, cellIndex) {
+            Ext.Msg.alert('Command', 'Command = ' + command + '<br/>' + 'Column = ' + record);
+        };
+
+        var prepareCustomer = function (value, record) {
+            return record.get('Customer').Name;
+        };
+        var prepareItemType = function (value, record) {
+            return record.get('ItemType').Name;
+        };
+        function UpdateGrid() {
+            App.windowForm.hide();
+            Ext.getCmp('GridListItem').getStore().reload();
+        }
+    </script>
+}
+
+@section example
+{
+
+    @(Html.X().Window()
+        .ID("windowForm")
+        .Modal(true)
+        .Hidden(true)
+        .Title("Tabs")
+        .Width(580)
+        .Height(300)
+        .Layout(LayoutType.Fit)
+        .Items(Html.X().FormPanel()
+        .Url("/Item/SaveData")
+        .ID("myFormPanel")
+        .Title("Input New Item")
+        .Frame(true)
+        .Width(500)
+        .BodyPadding(10)
+        .FieldDefaults(fd => { fd.LabelWidth = 110; fd.LabelStyle = "color:green;padding-left:4px;"; })        
+        .Items(items =>
+            {
+                items.Add(Html.X().TextField().ID("TxtCustomerName").FieldLabel("Customer").Hidden(true).ReadOnly(true));
+                items.Add(Html.X().ComboBox()
+                .ID("CmbCustomer")
+                .FieldLabel("Customer")
+                .AllowBlank(false)
+                .BlankText("Customer Cannot Blank")
+                .EmptyText("Customer")
+                .DisplayField("Name")
+                .ValueField("Id")
+                .TypeAhead(true)
+                .Width(400)
+                .PageSize(10)
+                .MinChars(0)
+                .TriggerAction(TriggerAction.Query)
+                .ListConfig(Html.X().BoundList()
+                    .LoadingText("Searching...")
+                    .ItemTpl(Html.X().XTemplate()
+                        .Html(@<text>
+                            <div class="search-item">
+							    {Name}
+						    </div>
+                        </text>)
+                    )
+                )
+                .Store(Html.X().Store()
+                    .AutoLoad(false)
+                    .Proxy(Html.X().AjaxProxy()
+                        .Url(Url.Action("GetDataCustomer"))
+                        .ActionMethods(am => am.Read = HttpMethod.POST)
+                        .Reader(Html.X().JsonReader().Root("data"))
+                    )
+                    .Model(Html.X().Model()
+                        .Fields(
+                            Html.X().ModelField().Name("Id"),
+                            Html.X().ModelField().Name("Name")
+                        )
+                    )
+                ));
+                items.Add(Html.X().ComboBox()
+                .ID("CmbItemType")
+                .FieldLabel("Item Type")
+                .AllowBlank(false)
+                .BlankText("Item Type Cannot Blank")
+                .EmptyText("Item Type")
+                .DisplayField("Name")
+                .ValueField("Id")
+                .TypeAhead(true)
+                .Width(400)
+                .PageSize(10)
+                .MinChars(0)
+                .TriggerAction(TriggerAction.Query)
+                .Listeners(ls =>
+                    ls.Select.Handler = "App.TxtItemTypeId.setValue(this.value);"
+                )
+                .ListConfig(Html.X().BoundList()
+                    .LoadingText("Searching...")
+                    .ItemTpl(Html.X().XTemplate()
+                        .Html(@<text>
+                            <div class="search-item">
+							    {Name}
+						    </div>
+                        </text>)
+                    )
+                )
+                .Store(Html.X().Store()
+                    .AutoLoad(false)
+                    .Proxy(Html.X().AjaxProxy()
+                        .Url(Url.Action("GetDataItemType"))
+                        .ActionMethods(am => am.Read = HttpMethod.POST)
+                        .Reader(Html.X().JsonReader().Root("data"))
+                    )
+                    .Model(Html.X().Model()
+                        .Fields(
+                            Html.X().ModelField().Name("Id"),
+                            Html.X().ModelField().Name("Name")
+                        )
+                    )
+                ));
+                items.Add(Html.X().TextField().ID("TxtId").FieldLabel("Id").Hidden(true));
+                items.Add(Html.X().TextField().ID("TxtItemTypeId").Hidden(true));
+                items.Add(Html.X().DateField().ID("TxtManufacturedAt").FieldLabel("Manufactured At").AllowBlank(false).BlankText("Manufactured At Cannot Blank"));
+                items.Add(Html.X().DateField().ID("TxtWarrantyExpiryDate").FieldLabel("Warranty Expiry Date").AllowBlank(false).BlankText("Warranty Expiry Date Cannot Blank"));
+                items.Add(Html.X().TextField().ID("TxtDescription").FieldLabel("Description").AllowBlank(false).BlankText("Description Cannot Blank"));
+            }
+        )
+        .Buttons(Html.X().Button()
+                    .Text("Save")
+                    .ID("btnNew")
+                    .Icon(Icon.Disk)
+                    .DirectEvents(de =>
+                        {
+                            de.Click.Url = Url.Action("SaveData");
+                            de.Click.EventMask.ShowMask = true;
+                            de.Click.FormID = "myFormPanel";
+                        }),
+                 Html.X().Button()
+                    .Text("Save")
+                    .ID("btnEdit")
+                    .Hidden(true)
+                    .Icon(Icon.Disk)
+                    .Listeners(ls =>
+                    ls.Click.Handler = @"this.up('form').submit({ 
+                                             url : '/Item/SaveDataEdit',
+                                             success : function (form, action) {
+                                                 eval(action.result.script);
+                                             }
+                                         });"
+                                ),
+                 Html.X().Button()
+                    .Text("Close")
+                    .Icon(Icon.CogStop)
+                    .Handler("App.windowForm.hide();")
+            )
+        )
+    )
+    @(Html.X().GridPanel()
+        .Title("List Item")
+        .ID("GridListItem")
+        .Width(700)
+        .Store(
+            Html.X().Store()
+                .RemotePaging(true)
+                .PageSize(10)
+                .DataSource(Model)
+                .Model(
+                    Html.X().Model()
+                    .Fields(
+                        new ModelField("Id"),
+                        new ModelField("CustomerId"),
+                        new ModelField("ItemTypeId"),
+                        new ModelField()
+                        {
+                            Name = "Customer",
+                            Type = ModelFieldType.Object
+                        },
+                        new ModelField()
+                        {
+                            Name = "ItemType",
+                            Type = ModelFieldType.Object
+                        },
+                        new ModelField("ItemTypeId"),
+                        new ModelField("ManufacturedAt"),
+                        new ModelField("WarrantyExpiryDate"),
+                        new ModelField()
+                        {
+                        Name = "CustomerName",
+                            Convert =
+                            {
+                                Fn = "prepareCustomer"
+                            }
+                        },
+                        new ModelField()
+                        {
+                        Name = "ItemTypeName",
+                            Convert =
+                            {
+                                Fn = "prepareItemType"
+                            }
+                        },
+                        new ModelField("Code"),
+                        new ModelField("Description")
+                    )
+                )
+                .ServerProxy(
+                    Html.X().AjaxProxy()
+                        .Url(Url.Action("GetData"))
+                )                
+        )
+        .TopBar(
+                Html.X().Toolbar()
+                    .Items(
+                        Html.X().Button()
+                            .Text("Add")
+                            .Icon(Icon.Add)
+                            .Handler("NewForm();")
+                    )
+            ) 
+        .ColumnModel(
+            Html.X().RowNumbererColumn(),
+            Html.X().Column().Text("Code").DataIndex("Code").Flex(1),
+            Html.X().Column().Text("ManufacturedAt").DataIndex("ManufacturedAt").Flex(1),
+            Html.X().Column().Text("Customer").DataIndex("CustomerName").Flex(1),
+            Html.X().Column().Text("Item Type").DataIndex("ItemTypeName").Flex(1),
+            Html.X().Column().Text("Description").DataIndex("Description").Flex(1),
+            Html.X().Column().Text("Action").Flex(1)
+            .Commands(Html.X().ImageCommand()
+                    .CommandName("Edit")
+                    .Icon(Icon.NoteEdit)
+                    .Text("Edit")
+                    .ToolTip(tt => tt.Text = "Edit"),
+                    Html.X().ImageCommand()
+                    .CommandName("Delete")
+                    .Icon(Icon.NoteDelete)
+                    .Text("Delete")
+                    .ToolTip(tt => tt.Text = "Delete")
+                )
+                .Listeners(ls =>
+                    ls.Command.Handler =  "ActionForm(command, record);"
+                )
+        )
+        .SelectionModel(
+            Html.X().RowSelectionModel().Mode(SelectionMode.Multi)
+        )
+        .View(Html.X().GridView().StripeRows(true))
+        .BottomBar(
+            Html.X().PagingToolbar()
+                .Items(
+                    Html.X().Label("Page size:"),
+                    Html.X().ToolbarSpacer(10),
+                    Html.X().ComboBox()
+                        .Width(80)
+                        .Items("1", "2", "10", "20")
+                        .SelectedItems("10")
+                        .Listeners(l=>{
+                            l.Select.Fn = "onComboBoxSelect";
+                        })
+                )                
+                .Plugins(Html.X().ProgressBarPager())
+        )        
+    )
+}

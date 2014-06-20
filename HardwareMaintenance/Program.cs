@@ -49,7 +49,7 @@ namespace HardwareMaintenance
                 {
                     ItemId = item.Id,
                     CustomerId = customer.Id,
-                    UserId = user.Id,
+                    DbUserId = user.Id,
                     RequestDate = DateTime.Now,
                     Complaint = "Keyboard huruf a dan spacebar sudah tidak bekerja dengan baik",
                     Case = Constant.MaintenanceCase.Emergency

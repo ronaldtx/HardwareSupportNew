@@ -12,7 +12,7 @@ namespace Core.DomainModel
         public int ItemId { get; set; }
         public int ItemTypeId { get; set; }
         public int CustomerId { get; set; }
-        public int UserId { get; set; }
+        public int DbUserId { get; set; }
         public DateTime RequestDate { get; set; }
         public string Complaint { get; set; }
         public int Case { get; set; }

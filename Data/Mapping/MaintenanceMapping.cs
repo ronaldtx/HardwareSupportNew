@@ -14,17 +14,13 @@ namespace Data.Mapping
         {
             HasKey(m => m.Id);
             HasRequired(m => m.Item)
-                .WithMany(i => i.Maintenances)
-                .WillCascadeOnDelete(false);
+                .WithMany(i => i.Maintenances);
             HasRequired(m => m.ItemType)
-                .WithMany(it => it.Maintenances)
-                .WillCascadeOnDelete(false);
+                .WithMany(it => it.Maintenances);
             HasRequired(m => m.Customer)
-                .WithMany(c => c.Maintenances)
-                .WillCascadeOnDelete(false);
+                .WithMany(c => c.Maintenances);
             HasRequired(m => m.DbUser)
-                .WithMany(u => u.Maintenances)
-                .WillCascadeOnDelete(false);
+                .WithMany(u => u.Maintenances);
             Ignore(m => m.Errors);
         }
     }

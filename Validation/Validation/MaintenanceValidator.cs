@@ -66,7 +66,7 @@ namespace Validation.Validation
 
         public Maintenance VHasUser(Maintenance maintenance, IUserService _userService)
         {
-            DbUser user = _userService.GetObjectById(maintenance.UserId);
+            DbUser user = _userService.GetObjectById(maintenance.DbUserId);
             if (user == null)
             {
                 maintenance.Errors.Add("DbUser", "Tidak boleh tidak ada");

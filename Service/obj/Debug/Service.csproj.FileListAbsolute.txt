@@ -8,3 +8,15 @@ C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Service\bin\Debug\Core.pdb
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Service\bin\Debug\Data.pdb
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Service\obj\Debug\Service.dll
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Service\obj\Debug\Service.pdb
+E:\githubbaru\hardware\HardwareMaintenance\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+E:\githubbaru\hardware\HardwareMaintenance\Service\bin\Debug\Service.dll
+E:\githubbaru\hardware\HardwareMaintenance\Service\bin\Debug\Service.pdb
+E:\githubbaru\hardware\HardwareMaintenance\Service\bin\Debug\Core.dll
+E:\githubbaru\hardware\HardwareMaintenance\Service\bin\Debug\Data.dll
+E:\githubbaru\hardware\HardwareMaintenance\Service\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\githubbaru\hardware\HardwareMaintenance\Service\bin\Debug\EntityFramework.dll
+E:\githubbaru\hardware\HardwareMaintenance\Service\bin\Debug\Core.pdb
+E:\githubbaru\hardware\HardwareMaintenance\Service\bin\Debug\Data.pdb
+E:\githubbaru\hardware\HardwareMaintenance\Service\obj\Debug\Service.dll
+E:\githubbaru\hardware\HardwareMaintenance\Service\obj\Debug\Service.pdb
+E:\githubbaru\hardware\HardwareMaintenance\Service\bin\Debug\EntityFramework.xml

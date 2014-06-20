@@ -45,9 +45,9 @@ namespace Service.Service
             return _repository.GetObjectsByItemTypeId(ItemTypeId);
         }
 
-        public IList<Maintenance> GetObjectsByUserId(int UserId)
+        public IList<Maintenance> GetObjectsByUserId(int DbUserId)
         {
-            return _repository.GetObjectsByUserId(UserId);
+            return _repository.GetObjectsByUserId(DbUserId);
         }
 
         public Maintenance GetObjectById(int Id)
@@ -83,7 +83,7 @@ namespace Service.Service
             {
                 ItemId = ItemId,
                 CustomerId = CustomerId,
-                UserId = UserId,
+                DbUserId = UserId,
                 RequestDate = RequestDate,
                 Complaint = Complaint,
                 Case = MaintenanceCase

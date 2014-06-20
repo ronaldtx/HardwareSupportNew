@@ -12,9 +12,10 @@ namespace Data.Context
 {
     public class HardwareMaintenanceEntities : DbContext
     {
-        public HardwareMaintenanceEntities()
+        public HardwareMaintenanceEntities() : base("HardwareMaintenanceDb") 
         {
-            Database.SetInitializer<HardwareMaintenanceEntities>(new DropCreateDatabaseAlways<HardwareMaintenanceEntities>());
+            //Database.SetInitializer<HardwareMaintenanceEntities>(new DropCreateDatabaseAlways<HardwareMaintenanceEntities>());
+            Database.SetInitializer<HardwareMaintenanceEntities>(new DropCreateDatabaseIfModelChanges<HardwareMaintenanceEntities>());
         }
 
         public void DeleteAllTables()
@@ -30,6 +31,7 @@ namespace Data.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();  
 
             modelBuilder.Configurations.Add(new CustomerMapping());
             modelBuilder.Configurations.Add(new ItemMapping());
