@@ -10,16 +10,3 @@ C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Validation\bin\Debug\Data.
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Validation\bin\Debug\Service.pdb
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Validation\obj\Debug\Validation.dll
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Validation\obj\Debug\Validation.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Validation\obj\Debug\Validation.csprojResolveAssemblyReference.cache
-E:\githubbaru\hardware\HardwareMaintenance\Validation\bin\Debug\Validation.dll
-E:\githubbaru\hardware\HardwareMaintenance\Validation\bin\Debug\Validation.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Validation\bin\Debug\Core.dll
-E:\githubbaru\hardware\HardwareMaintenance\Validation\bin\Debug\Data.dll
-E:\githubbaru\hardware\HardwareMaintenance\Validation\bin\Debug\Service.dll
-E:\githubbaru\hardware\HardwareMaintenance\Validation\bin\Debug\EntityFramework.dll
-E:\githubbaru\hardware\HardwareMaintenance\Validation\bin\Debug\Core.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Validation\bin\Debug\Data.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Validation\bin\Debug\Service.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Validation\obj\Debug\Validation.dll
-E:\githubbaru\hardware\HardwareMaintenance\Validation\obj\Debug\Validation.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Validation\bin\Debug\EntityFramework.xml

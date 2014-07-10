@@ -46,6 +46,7 @@
     <Compile Include="Service\MaintenanceService.cs" />
     <Compile Include="Service\ItemTypeService.cs" />
     <Compile Include="Service\ItemService.cs" />
+    <Compile Include="Service\UserLoginService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\CustomerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

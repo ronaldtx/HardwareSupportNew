@@ -12,3 +12,5 @@ C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\HardwareMaintenance\bin\De
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\HardwareMaintenance\bin\Debug\Data.pdb
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\HardwareMaintenance\bin\Debug\Service.pdb
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\HardwareMaintenance\bin\Debug\Validation.pdb
+E:\githubbaru\hardware\HardwareMaintenance\HardwareMaintenance\obj\Debug\HardwareMaintenance.csprojResolveAssemblyReference.cache
+E:\githubbaru\hardware\HardwareMaintenance\HardwareMaintenance\bin\Debug\HardwareMaintenance.exe.config

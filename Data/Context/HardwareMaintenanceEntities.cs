@@ -12,7 +12,7 @@ namespace Data.Context
 {
     public class HardwareMaintenanceEntities : DbContext
     {
-        public HardwareMaintenanceEntities() : base("HardwareMaintenanceDb") 
+        public HardwareMaintenanceEntities() : base("HardwareDb") 
         {
             //Database.SetInitializer<HardwareMaintenanceEntities>(new DropCreateDatabaseAlways<HardwareMaintenanceEntities>());
             Database.SetInitializer<HardwareMaintenanceEntities>(new DropCreateDatabaseIfModelChanges<HardwareMaintenanceEntities>());
@@ -38,6 +38,7 @@ namespace Data.Context
             modelBuilder.Configurations.Add(new ItemTypeMapping());
             modelBuilder.Configurations.Add(new MaintenanceMapping());
             modelBuilder.Configurations.Add(new UserMapping());
+            modelBuilder.Configurations.Add(new UserLoginMapping());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -47,5 +48,6 @@ namespace Data.Context
         public DbSet<ItemType> ItemTypes { get; set; }
         public DbSet<Maintenance> Maintenances { get; set; }
         public DbSet<DbUser> DbUsers { get; set; }
+        public DbSet<UserLogin> UserLogins { get; set; }
     }
 }

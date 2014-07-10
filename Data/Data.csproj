@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\HardwareMaintenanceEntities.cs" />
+    <Compile Include="Mapping\UserLoginMapping.cs" />
     <Compile Include="Mapping\UserMapping.cs" />
     <Compile Include="Mapping\MaintenanceMapping.cs" />
     <Compile Include="Mapping\ItemTypeMapping.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Repository\ItemRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\EfRepository.cs" />
+    <Compile Include="Repository\UserLoginRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

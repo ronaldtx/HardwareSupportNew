@@ -42,6 +42,7 @@
     <Compile Include="Validation\MaintenanceValidator.cs" />
     <Compile Include="Validation\ItemValidator.cs" />
     <Compile Include="Validation\ItemTypeValidator.cs" />
+    <Compile Include="Validation\UserLoginValidator.cs" />
     <Compile Include="Validation\UserValidator.cs" />
     <Compile Include="Validation\CustomerValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

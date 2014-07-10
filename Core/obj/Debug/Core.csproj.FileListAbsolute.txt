@@ -3,7 +3,3 @@ C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Core\bin\Debug\Core.dll
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Core\bin\Debug\Core.pdb
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Core\obj\Debug\Core.dll
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Core\obj\Debug\Core.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Core\bin\Debug\Core.dll
-E:\githubbaru\hardware\HardwareMaintenance\Core\bin\Debug\Core.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Core\obj\Debug\Core.dll
-E:\githubbaru\hardware\HardwareMaintenance\Core\obj\Debug\Core.pdb

@@ -45,7 +45,9 @@
     <Compile Include="DomainModel\Customer.cs" />
     <Compile Include="DomainModel\ItemType.cs" />
     <Compile Include="DomainModel\DbUser.cs" />
+    <Compile Include="DomainModel\UserLogin.cs" />
     <Compile Include="Interface\Repository\IMaintenanceRepository.cs" />
+    <Compile Include="Interface\Repository\IUserLoginRepository.cs" />
     <Compile Include="Interface\Repository\IUserRepository.cs" />
     <Compile Include="Interface\Repository\IItemTypeRepository.cs" />
     <Compile Include="Interface\Repository\IItemRepository.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="Interface\Repository\IRepository.cs" />
     <Compile Include="Interface\Service\IMaintenanceService.cs" />
     <Compile Include="Interface\Service\IItemTypeService.cs" />
+    <Compile Include="Interface\Service\IUserLoginService.cs" />
     <Compile Include="Interface\Service\IUserService.cs" />
     <Compile Include="Interface\Service\IItemService.cs" />
     <Compile Include="Interface\Service\ICustomerService.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Interface\Validation\ICustomerValidator.cs" />
     <Compile Include="Interface\Validation\IItemTypeValidator.cs" />
     <Compile Include="Interface\Validation\IItemValidator.cs" />
+    <Compile Include="Interface\Validation\IUserLoginValidator.cs" />
     <Compile Include="Interface\Validation\IUserValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

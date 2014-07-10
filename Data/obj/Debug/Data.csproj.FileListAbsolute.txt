@@ -5,12 +5,3 @@ C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Data\bin\Debug\Core.dll
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Data\bin\Debug\Core.pdb
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Data\obj\Debug\Data.dll
 C:\Users\Samsung\Documents\GitHub\HardwareMaintenance\Data\obj\Debug\Data.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Data\bin\Debug\Data.dll
-E:\githubbaru\hardware\HardwareMaintenance\Data\bin\Debug\Data.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Data\bin\Debug\Core.dll
-E:\githubbaru\hardware\HardwareMaintenance\Data\bin\Debug\Core.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
-E:\githubbaru\hardware\HardwareMaintenance\Data\obj\Debug\Data.dll
-E:\githubbaru\hardware\HardwareMaintenance\Data\obj\Debug\Data.pdb
-E:\githubbaru\hardware\HardwareMaintenance\Data\bin\Debug\EntityFramework.dll
-E:\githubbaru\hardware\HardwareMaintenance\Data\bin\Debug\EntityFramework.xml
